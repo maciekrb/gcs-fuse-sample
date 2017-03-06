@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: gcsfuse-test
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gcsfuse-test
+    spec:
+      containers:
+        - name: gcsfuse-test
+          image: gcr.io/some-repo/gcs-fuse:latest
+          securityContext:
+            privileged: true
+            capabilities:
+              add:
+                - SYS_ADMIN
+          lifecycle:
+            postStart:
+              exec:
+                command: ["gcsfuse", "-o", "nonempty", "some-bucket", "/mnt/some-bucket"]
+            preStop:
+              exec:
+                command: ["fusermount", "-u", "/mnt/some-bucket"]
