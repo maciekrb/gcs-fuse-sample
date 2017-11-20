@@ -14,7 +14,7 @@ securityContext:
       - SYS_ADMIN
 
 ```
-For the container to have access to `/def/fuse` it has to run with `SYS_ADMIN` capabilities.
+For the container to have access to `/dev/fuse` it has to run with `SYS_ADMIN` capabilities.
 
 ```yaml
 lifecycle:
