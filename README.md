@@ -29,7 +29,7 @@ As no real Kubernetes volumes are really involved, the whole thing can be implem
 
 The big catch is that for this to work, the container has to be built with `gcsfuse`. The `Dockerfile` includes a base build for debian jessie.
 
-Unfortunately as the the `gcsfuse` does not sync the files, it is not possible to share the file system with other containers in the pod via a `volumes[].emptyDir.{}` directive.
+Unfortunately as the `gcsfuse` does not sync the files, it is not possible to share the file system with other containers in the pod via a `volumes[].emptyDir.{}` directive.
 
 ## References
 
